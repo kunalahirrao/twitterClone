@@ -5,9 +5,10 @@ import "./Profile.css";
 function Profile() {
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      name: "",
       email: "",
+      mobileNo: "",
+      password: "",
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -17,68 +18,38 @@ function Profile() {
     <Container>
       <h4 className="font-weight-bold mx-auto">Profile</h4>
       <form onSubmit={formik.handleSubmit}>
-        <FloatingLabel
-          controlId="floatingInput"
-          label="Email address"
-          className="mb-3"
-        >
-          <Form.Control type="email" placeholder="name@example.com" />
+        <FloatingLabel controlId="name" label="Name" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Enter you name"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
         </FloatingLabel>
-        <FloatingLabel
-          controlId="floatingPassword"
-          label="Password"
-          className="mb-3"
-        >
-          <Form.Control type="password" placeholder="Password" />
+        <FloatingLabel controlId="email" label="Email address" className="mb-3">
+          <Form.Control
+            type="email"
+            placeholder="name@example.com"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
         </FloatingLabel>
-        <FloatingLabel
-          controlId="floatingPassword"
-          label="Password"
-          className="mb-3"
-        >
-          <Form.Control type="password" placeholder="Password" />
+        <FloatingLabel controlId="mobileNo" label="Mobile No" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Mobile No"
+            onChange={formik.handleChange}
+            value={formik.values.mobileNo}
+          />
         </FloatingLabel>
-        <FloatingLabel
-          controlId="floatingPassword"
-          label="Password"
-          className="mb-3"
-        >
-          <Form.Control type="password" placeholder="Password" />
+        <FloatingLabel controlId="password" label="Password" className="mb-3">
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
         </FloatingLabel>
-        <FloatingLabel
-          controlId="floatingPassword"
-          label="Password"
-          className="mb-3"
-        >
-          <Form.Control type="password" placeholder="Password" />
-        </FloatingLabel>
-        {/* <label htmlFor="firstName">First Name</label>
-      <input
-        id="firstName"
-        name="firstName"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.firstName}
-      />
-
-      <label htmlFor="lastName">Last Name</label>
-      <input
-        id="lastName"
-        name="lastName"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.lastName}
-      />
-
-      <label htmlFor="email">Email Address</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-      />
-        */}
         <Button variant="primary" type="submit" className="ml-10">
           Submit
         </Button>

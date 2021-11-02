@@ -31,21 +31,4 @@ module.exports = {
       throw new QueryExecutionError();
     }
   },
-  getAllUsersExceptLoggedInAndFollowedUser: async function (_id, followers) {
-    let query;
-    if (followers.length) {
-      query = { _id: { $ne: _id }, followers: { $ne: [followers] } };
-    } else {
-      query = { id: { "$ne": _id } };
-    }
-    try {
-      const users = await User.find({
-        query,
-      });
-      return users;
-    } catch (err) {
-      console.log(err);
-      throw new QueryExecutionError();
-    }
-  },
 };

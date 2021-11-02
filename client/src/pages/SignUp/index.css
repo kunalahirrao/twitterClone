@@ -1,0 +1,12 @@
+.modal-header {
+  border-bottom: none;
+}
+
+.closeButtonHolder {
+  display: "flex";
+  justify-content: "space-between";
+}
+
+.flex-item {
+    justify-content: right;
+  }

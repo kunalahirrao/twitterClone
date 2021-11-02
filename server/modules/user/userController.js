@@ -62,20 +62,4 @@ module.exports = {
       next(err);
     }
   },
-  getAllUsers: async (req, res, next) => {
-    const { _id, followers } = req.user;    
-    try {
-      const users = await mongo.getAllUsersExceptLoggedInAndFollowedUser(
-        _id,
-        followers
-      );
-      const { statusCode, msg, isShown } = responseMessages.user.addFollower;
-      res
-        .status(statusCode)
-        .send(responseGenerator.getResponse(statusCode, msg, isShown, users));
-    } catch (err) {
-      console.log(err);
-      next(err);
-    }
-  },
 };

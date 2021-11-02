@@ -13,8 +13,20 @@ module.exports = {
   getAllTweets: async function (userId) {
     try {
       const { followers } = await User.findById(userId, "followers");
-      const tweets = await Tweet.find({ userId: [...followers, userId] });
-      return tweets;
+      const followersTweets = await Tweet.find(
+        { userId: { $in: followers } },
+        null,
+        {
+          sort: {
+            date: -1,
+          },
+        }
+      );
+      const ownTweets = await User.findById(userId).populate("tweets");
+      const tweets = [...followersTweets, ...ownTweets.tweets];
+      return tweets.sort((a, b) => {
+        return new Date(b.date) - new Date(a.date);
+      });
     } catch (err) {
       throw new QueryExecutionError();
     }

@@ -32,7 +32,6 @@ const userSchema = new mongoose.Schema(
 );
 
 //Virtual Attribute ----Not actually stored ---Just to estblish relationship
-
 userSchema.virtual("tweets", {
   //Virtual Field---tweets
   ref: "Tweet", //Tweet Model
