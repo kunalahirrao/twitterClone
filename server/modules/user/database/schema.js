@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
     followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    bookmarks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Tweet" }],
     tokens: [
       {
         token: {

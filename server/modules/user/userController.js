@@ -6,6 +6,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 module.exports = {
   createUser: async (req, res, next) => {
     const { user } = req.body;
+    console.log(user)
     try {
       await mongo.createUser(user);
       const { statusCode, msg, isShown } = responseMessages.user.createUser;
@@ -58,7 +59,43 @@ module.exports = {
         .status(statusCode)
         .send(responseGenerator.getResponse(statusCode, msg, isShown));
     } catch (err) {
-      console.log(err);
+      next(err);
+    }
+  },
+  whomToFollow: async (req, res, next) => {
+    const { _id } = req.user;
+    try {
+      const users = await mongo.getWhomToFollow(_id);
+      const { statusCode, msg, isShown } = responseMessages.user.addFollower;
+      res
+        .status(statusCode)
+        .send(responseGenerator.getResponse(statusCode, msg, isShown, users));
+    } catch (err) {
+      next(err);
+    }
+  },
+  updateUser: async (req, res, next) => {
+    const { _id } = req.user;
+    const { name, email, password, mobileNo } = req.body;
+    try {
+      const user = await mongo.updateUser(_id, name, email, password, mobileNo);
+      const { statusCode, msg, isShown } = responseMessages.user.addFollower;
+      res
+        .status(statusCode)
+        .send(responseGenerator.getResponse(statusCode, msg, isShown, user));
+    } catch (err) {
+      next(err);
+    }
+  },
+  getUser: async (req, res, next) => {
+    const { _id } = req.user;
+    try {
+      const user = await mongo.getUserDetails(_id);
+      const { statusCode, msg, isShown } = responseMessages.user.addFollower;
+      res
+        .status(statusCode)
+        .send(responseGenerator.getResponse(statusCode, msg, isShown, user));
+    } catch (err) {
       next(err);
     }
   },

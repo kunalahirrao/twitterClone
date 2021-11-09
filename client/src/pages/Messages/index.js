@@ -1,6 +1,6 @@
 import React from 'react'
 
-function index() {
+function index(props) {
     return (
         <div>
             <p>Messages</p>

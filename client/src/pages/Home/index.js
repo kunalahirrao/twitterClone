@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Nav, Button, Row, Col } from "react-bootstrap";
 import Navbar from "../../Components/Navbar/Navbar";
 import Suggestions from "../../Components/Suggestions/Suggestions";
 import Tweets from "../../Components/Tweets/Tweets";
+import axios from "../../util/axios-auth";
 
-function index(props) {
+function Index(props) {
+  useEffect(async () => {
+    await getTweets();
+    async function getTweets() {
+      await axios.get();
+    }
+  }, []);
   return (
     <>
-      <Container>
-        <Row>
+      <Container
+        style={{ overflow: "scroll", height: "930px", overflowX: "hidden" }}
+      >
+        <Row className="mt-2">
           <Col>
-            <Navbar></Navbar>
-          </Col>
-          <Col xs={7}>
             <Tweets></Tweets>
-          </Col>
-          <Col>
-            <Suggestions></Suggestions>
           </Col>
         </Row>
       </Container>
@@ -24,4 +27,4 @@ function index(props) {
   );
 }
 
-export default index;
+export default Index;

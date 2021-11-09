@@ -6,11 +6,12 @@ import twitterLogo from "../../Assets/twitter-logo.png";
 
 import "./index.css";
 
-function index() {
+function index(props) {
   const signIn = () => {
-    setTimeout(() => {
-      console.log("Rendering");
-    }, 10000);
+    props.history.push("/signin");
+  };
+  const signUp = () => {
+    props.history.push("/signup");
   };
   return (
     <div>
@@ -34,12 +35,18 @@ function index() {
                 <Button
                   variant="outline-dark"
                   className="button"
-                  onClick={signIn}
+                  onClick={() => {
+                    signIn();
+                  }}
                 >
                   Sign In
                 </Button>
-                <Button variant="outline-dark" className="button">
-                  Sign Out
+                <Button
+                  variant="outline-dark"
+                  className="button"
+                  onClick={() => signUp()}
+                >
+                  Sign Up
                 </Button>
               </Stack>
             </Col>

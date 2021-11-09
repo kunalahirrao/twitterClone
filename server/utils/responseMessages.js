@@ -5,11 +5,16 @@ module.exports = {
       msg: "Tweet created successfully",
       isShown: "0",
     },
-    getTweets:{
+    getTweets: {
       statusCode: 201,
       msg: "Tweets",
       isShown: "1",
-    }
+    },
+    likeTweet: {
+      statusCode: 200,
+      msg: "Liked",
+      isShown: "0",
+    },
   },
   user: {
     createUser: {

@@ -22,4 +22,8 @@
   border-radius: 20px;
 }
 
-
+.twitterLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

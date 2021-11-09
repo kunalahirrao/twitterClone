@@ -5,7 +5,7 @@ import { Card } from 'react-bootstrap'
 function Trending() {
   return (
     <>
-      <Card style={{ width: "25rem" }}>
+      <Card style={{ width: "18rem" }}>
         <Card.Body>
           <Card.Title>#Space</Card.Title>
           <Card.Subtitle className="mb-1 text-muted">

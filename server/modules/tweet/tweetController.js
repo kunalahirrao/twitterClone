@@ -27,4 +27,43 @@ module.exports = {
       next(err);
     }
   },
+  getBookmarks: async (req, res, next) => {
+    const { _id } = req.user;
+    try {
+      const bookmarks = await mongo.getBookmarks(_id);      
+      const { statusCode, msg, isShown } = responseMessages.tweet.getTweets;
+      res
+        .status(statusCode)
+        .send(responseGenerator.getResponse(statusCode, msg, isShown, bookmarks));
+    } catch (error) {
+      next(err);
+    }
+  },
+  likeTweet: async (req, res, next) => {
+    const { _id } = req.user;
+    const { tweetId } = req.body;
+    try {
+      await mongo.likeTweet(_id, tweetId);
+      const { statusCode, msg, isShown } = responseMessages.tweet.likeTweet;
+      res
+        .status(statusCode)
+        .send(responseGenerator.getResponse(statusCode, msg, isShown));
+    } catch (error) {
+      next(err);
+    }
+  },
+  bookMarkTweet: async (req, res, next) => {
+    const { _id } = req.user;
+    const { tweetId } = req.body;
+    try {
+      await mongo.bookMarkTweet(_id, tweetId);
+      const { statusCode, msg, isShown } = responseMessages.tweet.likeTweet;
+      res
+        .status(statusCode)
+        .send(responseGenerator.getResponse(statusCode, msg, isShown));
+    } catch (err) {
+      console.log(err);
+      next(err);
+    }
+  },
 };

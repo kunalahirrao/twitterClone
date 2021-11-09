@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import Trending from "./Trending";
+import WhoToFollow from "./WhoToFollow";
 
 function Suggestions() {
-    return (
-        <div>
-            <p>Suggestions</p>
-        </div>
-    )
+  return (
+    <>
+      <h4 className="font-weight-bold">Trends For You</h4>
+      <Trending></Trending>
+      <h4 className="font-weight-bold">Who to Follow</h4>
+      <WhoToFollow></WhoToFollow>
+    </>
+  );
 }
 
-export default Suggestions
+export default Suggestions;

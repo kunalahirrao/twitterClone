@@ -1,0 +1,16 @@
+.tweet-font-date {
+  font-weight: normal;
+  font-weight: 300;
+  color: gray;
+}
+
+.like-button {
+  color:red;
+  cursor: pointer;
+}
+
+.bookmark-button {
+  color:blue;
+  cursor: pointer;
+  margin-left: 20px;
+}

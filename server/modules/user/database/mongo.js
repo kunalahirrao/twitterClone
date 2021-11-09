@@ -31,4 +31,36 @@ module.exports = {
       throw new QueryExecutionError();
     }
   },
+  getWhomToFollow: async function (userId) {
+    try {
+      const { followers } = await User.findById(userId, "followers");
+      const users = await User.find({
+        _id: { $nin: [...followers, userId] },
+      });
+      console.log(followers);
+      return users;
+    } catch (err) {
+      throw new QueryExecutionError();
+    }
+  },
+  updateUser: async function (userId, name, email, password, mobileNo) {
+    try {
+      const user = await User.findByIdAndUpdate(
+        userId,
+        { name, email, password, mobileNo },
+        { new: true }
+      );
+      return user;
+    } catch (error) {
+      throw new QueryExecutionError();
+    }
+  },
+  getUserDetails: async function (userId) {
+    try {
+      const user = await User.findById(userId)
+      return user
+    } catch (error) {
+      throw new QueryExecutionError();
+    }
+  },
 };
